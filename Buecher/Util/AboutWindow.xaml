@@ -1,0 +1,40 @@
+﻿<Controls:MetroWindow x:Class="Buecher.Util.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Buecher.Util"
+        mc:Ignorable="d"
+        Title="Info" Width="400" SizeToContent="Height">
+    <StackPanel>
+        <TextBlock FontWeight="ExtraBold">Allgemeine Information</TextBlock>
+        <TextBlock TextWrapping="WrapWithOverflow">Dieses Programm dient zur Verwaltung vom Büchern. Dabei werden die Bücher mit ihrem Autor, ihrem Genre und ihrem Standort gespeichert. Ein Kommentar bei einem Buch ist optional.</TextBlock>
+
+        <TextBlock />
+        <TextBlock FontWeight="ExtraBold">Speicherung der Daten</TextBlock>
+        <TextBlock TextWrapping="WrapWithOverflow">Es werden keine Daten in Datenbanken geschrieben oder an Dritte weitergereicht. 
+            Die Speicherung erfolgt lokal auf den Rechner, auf den das Programm läuft. Es gibt 3 relevante Dateien, die wichtig sind für das Programm und im json-Format abgespeichert werden.
+        </TextBlock>
+
+        <TextBlock Name="Autor" FontWeight="Bold" />
+        <TextBlock TextWrapping="WrapWithOverflow">
+            In dieser Datei werden sämtliche Autoren mit Vorname und Nachname abgespeichert. 
+            Damit ein Buch erstellt werden kann, muss zuvor ein Autor angelegt werden.
+        </TextBlock>
+
+        <TextBlock Name="Buch" FontWeight="Bold"/>
+        <TextBlock TextWrapping="WrapWithOverflow">
+            In dieser Datei werden sämtliche Bücher mit ihren Autoren, ihrem Genre, ihrem Standort und optional mit einem Kommentar gespeichert.
+            Aus dieser Datei heraus werden auch die gesamten Bücher angezeigt.
+        </TextBlock>
+
+        <TextBlock Name="Settings" FontWeight="Bold"/>
+        <TextBlock TextWrapping="WrapWithOverflow">
+            In dieser Datei befinden sich benutzerspezifische Einstellungen wie die Farbe und ob die Anwendung hell oder dunkel dargestellt wird.
+        </TextBlock>
+
+
+
+    </StackPanel>
+</Controls:MetroWindow>
