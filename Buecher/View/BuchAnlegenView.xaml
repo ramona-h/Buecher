@@ -6,11 +6,10 @@
              xmlns:local="clr-namespace:Buecher.View"
              xmlns:vm="clr-namespace:Buecher.ViewModel"
              mc:Ignorable="d" 
+             xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             Dialog:DialogParticipation.Register="{Binding}"
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
-    <UserControl.DataContext>
-        <vm:BuchAnlegenViewModel />
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

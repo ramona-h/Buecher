@@ -45,5 +45,10 @@ namespace Buecher.View
             //}
            
         }
+
+        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

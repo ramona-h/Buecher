@@ -1,5 +1,6 @@
 ﻿using Buecher.Model;
 using Buecher.Util;
+using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -78,12 +79,15 @@ namespace Buecher.ViewModel
 
         #endregion
 
+        private IDialogCoordinator dialogCoordinator;
+
         public JsonHandler<Buch> JsonHandler { get; }
 
         public DelegateCommand AnlegenCommand { get; }
 
-        public BuchAnlegenViewModel()
+        public BuchAnlegenViewModel(IDialogCoordinator instance)
         {
+            dialogCoordinator = instance;
             AnlegenCommand = new DelegateCommand(OnAnlegen, OnCanAnlegen);
             JsonHandler = new JsonHandler<Buch>(Paths.BUCH);
         }
@@ -93,18 +97,19 @@ namespace Buecher.ViewModel
             return string.IsNullOrEmpty(Titel) || Autor == null || Genre == null || Ort == null ? false : true;
         }
 
-        private void OnAnlegen()
+        private async void OnAnlegen()
         {
             Buch buch = new Buch(Titel, Autor, Genre, Ort, Kommentar);
+
             if (JsonHandler.Contains(buch))
             {
                 //Error
-                MessageBox.Show(buch.ToString() + " existiert bereits", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                await dialogCoordinator.ShowMessageAsync(this, "Fehler", buch.ToString() + " existiert bereits");
             }
             else
             {
                 JsonHandler.Write(buch);
-                MessageBox.Show(buch.ToString() + " erfolgreich angelegt", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
+                await dialogCoordinator.ShowMessageAsync(this, "Erfolg", buch.ToString() + " erfolgreich angelegt");
             }
         }
     }

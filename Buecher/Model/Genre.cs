@@ -9,22 +9,22 @@ namespace Buecher.Model
     public class Genre : IComparable
     {
 
-        public static Genre THRILLER = new Genre("Thriller");
-        public static Genre FANTASY = new Genre("Fantasy");
-        public static Genre KRIMI = new Genre("Krimi");
-        public static Genre COMIC = new Genre("Comic");
-        public static Genre KINDERBUCH = new Genre("Kinderbuch");
-        public static Genre JUGENDBUCH = new Genre("Jugendbuch");
-        public static Genre SONSTIGE = new Genre("Sonstige");
+        //public static Genre THRILLER = new Genre("Thriller");
+        //public static Genre FANTASY = new Genre("Fantasy");
+        //public static Genre KRIMI = new Genre("Krimi");
+        //public static Genre COMIC = new Genre("Comic");
+        //public static Genre KINDERBUCH = new Genre("Kinderbuch");
+        //public static Genre JUGENDBUCH = new Genre("Jugendbuch");
+        //public static Genre SONSTIGE = new Genre("Sonstige");
 
-        public static List<Genre> Values()
-        {
-            List<Genre> list = new List<Genre>()
-            {
-                THRILLER, FANTASY, KRIMI, COMIC, KINDERBUCH, JUGENDBUCH, SONSTIGE
-            };
-            return list;
-        }
+        //public static List<Genre> Values()
+        //{
+        //    List<Genre> list = new List<Genre>()
+        //    {
+        //        THRILLER, FANTASY, KRIMI, COMIC, KINDERBUCH, JUGENDBUCH, SONSTIGE
+        //    };
+        //    return list;
+        //}
 
         public string Bezeichnung { get; set; }
 
@@ -46,7 +46,7 @@ namespace Buecher.Model
 
         public override bool Equals(object obj)
         {
-            var genre = obj as Genre;
+            Genre genre = obj as Genre;
             return genre != null &&
                    Bezeichnung == genre.Bezeichnung;
         }

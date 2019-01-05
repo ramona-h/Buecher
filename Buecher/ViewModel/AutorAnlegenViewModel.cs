@@ -40,11 +40,15 @@ namespace Buecher.ViewModel
             }
         }
         #endregion
+
+        private IDialogCoordinator dialogCoordinator;
+
         public JsonHandler<Autor> JsonHandler { get; }
         public DelegateCommand AnlegenCommand { get; }
 
-        public AutorAnlegenViewModel()
+        public AutorAnlegenViewModel(IDialogCoordinator instance)
         {
+            dialogCoordinator = instance;
             AnlegenCommand = new DelegateCommand(OnAnlegen, OnAnlegenCanExecute);
             JsonHandler = new JsonHandler<Autor>(Paths.AUTOR);
         }
@@ -54,19 +58,19 @@ namespace Buecher.ViewModel
             return string.IsNullOrWhiteSpace(Vorname) || string.IsNullOrWhiteSpace(Nachname) ? false : true;
         }
 
-        private void OnAnlegen()
+        private async void OnAnlegen()
         {
             Autor autor = new Autor(Nachname, Vorname);
 
             if (JsonHandler.Contains(autor))
             {
                 //Error: Autor exisitiert bereits
-                MessageBox.Show(autor.ToString() + " existiert bereits", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                await dialogCoordinator.ShowMessageAsync(this, "Fehler", autor.ToString() + " existiert bereits");
             }
             else
             {                 
                 JsonHandler.Write(autor);
-                MessageBox.Show(autor.ToString() + " erfolgreich angelegt", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
+                await dialogCoordinator.ShowMessageAsync(this, "Erfolg", autor.ToString() + " erfolgreich angelegt");
             }
 
         }

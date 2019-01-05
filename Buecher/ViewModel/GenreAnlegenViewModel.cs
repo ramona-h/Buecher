@@ -1,5 +1,6 @@
 ﻿using Buecher.Model;
 using Buecher.Util;
+using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -17,32 +18,39 @@ namespace Buecher.ViewModel
         public string Bezeichnung
         {
             get { return _bezeichnung; }
-            set { _bezeichnung = value;
+            set
+            {
+                _bezeichnung = value;
                 OnPropertyChanged();
                 AnlegenCommand.RaiseCanExecuteChanged();
             }
         }
-        
+
         public JsonHandler<Genre> JsonHandler { get; }
         public DelegateCommand AnlegenCommand { get; }
 
-        public GenreAnlegenViewModel()
+        private IDialogCoordinator dialogCoordinator;
+
+
+        public GenreAnlegenViewModel(IDialogCoordinator instance)
         {
+            dialogCoordinator = instance;
             JsonHandler = new JsonHandler<Genre>(Paths.GENRE);
             AnlegenCommand = new DelegateCommand(OnAnlegen, OnAnlegenCanExecute);
         }
 
-        private void OnAnlegen()
+        private async void OnAnlegen()
         {
             Genre genre = new Genre(Bezeichnung);
-            if (JsonHandler.Contains(genre)){
-                //Error
-              //  DialogResult dr = MetroMessageBox.Show(this, "\n\nContinue Logging Out?", "EMPLOYEE MODULE | LOG OUT", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+            if (JsonHandler.Contains(genre))
+            {
+                //Error 
+                await dialogCoordinator.ShowMessageAsync(this, "Fehler", "Das Genre " + genre.Bezeichnung + " existiert bereits!");
             }
             else
             {
                 JsonHandler.Write(genre);
+                await dialogCoordinator.ShowMessageAsync(this, "Erfolg", "Das Genre " + genre.Bezeichnung + " wurde erfolgreich angelegt!");
             }
         }
 

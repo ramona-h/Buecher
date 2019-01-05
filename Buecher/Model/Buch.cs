@@ -27,5 +27,23 @@ namespace Buecher.Model
         {
             return String.Format("{0} von {1}", Titel, Autor);
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Buch buch &&
+                   Titel == buch.Titel &&
+                   EqualityComparer<Autor>.Default.Equals(Autor, buch.Autor);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -693040488;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Titel);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Autor>.Default.GetHashCode(Autor);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Genre>.Default.GetHashCode(Genre);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Ort>.Default.GetHashCode(Ort);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Kommentar);
+            return hashCode;
+        }
     }
 }

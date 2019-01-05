@@ -1,5 +1,6 @@
 ﻿using Buecher.Model;
 using Buecher.Util;
+using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Buecher.ViewModel
 {
-   public class OrtAnlegenViewModel : BaseViewModel
+    public class OrtAnlegenViewModel : BaseViewModel
     {
         private string _bezeichnung;
 
@@ -24,27 +25,30 @@ namespace Buecher.ViewModel
             }
         }
 
+        private IDialogCoordinator dialogCoordinator;
         public JsonHandler<Ort> JsonHandler { get; }
         public DelegateCommand AnlegenCommand { get; }
 
-        public OrtAnlegenViewModel()
+        public OrtAnlegenViewModel(IDialogCoordinator instance)
         {
+            dialogCoordinator = instance;
             JsonHandler = new JsonHandler<Ort>(Paths.ORT);
             AnlegenCommand = new DelegateCommand(OnAnlegen, OnAnlegenCanExecute);
         }
 
-        private void OnAnlegen()
+        private async void OnAnlegen()
         {
             Ort ort = new Ort(Bezeichnung);
             if (JsonHandler.Contains(ort))
             {
                 //Error
-                //  DialogResult dr = MetroMessageBox.Show(this, "\n\nContinue Logging Out?", "EMPLOYEE MODULE | LOG OUT", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+                await dialogCoordinator.ShowMessageAsync(this, "Fehler", "Der Ort " + ort.Bezeichnung + " existiert bereits!");
             }
             else
             {
                 JsonHandler.Write(ort);
+                await dialogCoordinator.ShowMessageAsync(this, "Erfolg", "Der Ort " + ort.Bezeichnung + " wurde erfolgreich angelegt!");
+
             }
         }
 

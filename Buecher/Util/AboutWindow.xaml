@@ -14,7 +14,7 @@
         <TextBlock />
         <TextBlock FontWeight="ExtraBold">Speicherung der Daten</TextBlock>
         <TextBlock TextWrapping="WrapWithOverflow">Es werden keine Daten in Datenbanken geschrieben oder an Dritte weitergereicht. 
-            Die Speicherung erfolgt lokal auf den Rechner, auf den das Programm läuft. Es gibt 3 relevante Dateien, die wichtig sind für das Programm und im json-Format abgespeichert werden.
+            Die Speicherung erfolgt lokal auf den Rechner, auf den das Programm läuft. Es gibt 5 relevante Dateien, die wichtig sind für das Programm und im json-Format abgespeichert werden.
         </TextBlock>
 
         <TextBlock Name="Genre" FontWeight="Bold"/>

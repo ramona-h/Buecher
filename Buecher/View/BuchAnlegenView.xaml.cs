@@ -28,6 +28,7 @@ namespace Buecher.View
         public BuchAnlegenView()
         {
             InitializeComponent();
+            DataContext = new BuchAnlegenViewModel(DialogCoordinator.Instance); ;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

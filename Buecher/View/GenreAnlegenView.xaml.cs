@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Buecher.ViewModel;
+using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace Buecher.View
     /// </summary>
     public partial class GenreAnlegenView : UserControl
     {
+
         public GenreAnlegenView()
         {
             InitializeComponent();
+            DataContext = new GenreAnlegenViewModel(DialogCoordinator.Instance); ;
         }
     }
 }
