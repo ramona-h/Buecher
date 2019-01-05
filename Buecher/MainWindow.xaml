@@ -15,7 +15,16 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
+    
     <TabControl>
+        <TabItem Header="Genre anlegen">
+            <view:GenreAnlegenView />
+        </TabItem>
+
+        <TabItem Header="Ort anlegen">
+            <view:OrtAnlegenView />
+        </TabItem>
+
         <TabItem Header="Autor anlegen">
             <view:AutorAnlegenView />
         </TabItem>
@@ -27,5 +36,11 @@
         <TabItem Header="Bücher anzeigen">
             <view:BuchAnzeigenView />
         </TabItem>
+
+        
+
+
     </TabControl>
+   
+
 </Controls:MetroWindow>

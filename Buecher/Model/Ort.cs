@@ -60,5 +60,17 @@ namespace Buecher.Model
             Ort other = obj as Ort;
             return Bezeichnung.CompareTo(other.Bezeichnung);
         }
+
+        public override bool Equals(object obj)
+        {
+            var ort = obj as Ort;
+            return ort != null &&
+                   Bezeichnung == ort.Bezeichnung;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1826680653 + EqualityComparer<string>.Default.GetHashCode(Bezeichnung);
+        }
     }
 }

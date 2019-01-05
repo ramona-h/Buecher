@@ -27,9 +27,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
-                   Content="Buch anlegen"  />
-
         <Label Grid.Row="1" Grid.Column="0" Content="Titel:" />
         <TextBox Grid.Row="1" Grid.Column="1" 
                  Text="{Binding Titel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

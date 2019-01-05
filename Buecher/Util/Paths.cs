@@ -12,11 +12,13 @@ namespace Buecher.Util
 
         public static Paths AUTOR { get; }
         public static Paths BUCH { get; }
+        public static Paths GENRE { get; }
+        public static Paths ORT { get; }
         public static Paths SETTINGS { get; }
 
         public static List<Paths> Values()
         {
-            return new List<Paths>() { AUTOR, BUCH, SETTINGS };
+            return new List<Paths>() { AUTOR, BUCH, GENRE, ORT, SETTINGS };
         }
 
 
@@ -30,6 +32,8 @@ namespace Buecher.Util
             BASE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MeineBuecherverwaltung");
             AUTOR = new Paths("Autor.json");
             BUCH = new Paths("Buch.json");
+            GENRE = new Paths("Genre.json");
+            ORT = new Paths("Ort.json");
             SETTINGS = new Paths("Settings.json");
         }
 

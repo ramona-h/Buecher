@@ -1,4 +1,5 @@
-﻿using Buecher.Util;
+﻿using Buecher.Model;
+using Buecher.Util;
 using MahApps.Metro;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,13 @@ namespace Buecher
                     }
                 }
             }
+
+
+            //JsonHandler<Genre> genre = new JsonHandler<Genre>(Paths.GENRE);
+            //genre.Write(Genre.Values());
+
+            //JsonHandler<Ort> ort = new JsonHandler<Ort>(Paths.ORT);
+            //ort.Write(Ort.Values());
         }
     }
 }

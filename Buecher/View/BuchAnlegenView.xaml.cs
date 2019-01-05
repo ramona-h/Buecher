@@ -37,22 +37,25 @@ namespace Buecher.View
             cboxGenre.Items.Clear();
             cboxOrt.Items.Clear();
 
-            JsonHandler<Autor> jsonHandler = new JsonHandler<Autor>(Paths.AUTOR);
-            List<Autor> autoren = jsonHandler.Read();
-            if (autoren != null)
-            {
+            JsonHandler<Autor> autorJsonHandler = new JsonHandler<Autor>(Paths.AUTOR);
+            List<Autor> autoren = autorJsonHandler.Read();
+            //if (autoren != null)
+            //{
                 foreach (var autor in autoren)
                 {
                     cboxAutor.Items.Add(autor);
                 }
-            }
+            //}
 
-            foreach (var genre in Genre.Values())
+            JsonHandler<Genre> genreJsonHandler = new JsonHandler<Genre>(Paths.GENRE);
+            List<Genre> genres = genreJsonHandler.Read();
+            foreach (var genre in genres)
             {
                 cboxGenre.Items.Add(genre);
             }
 
-            foreach (var ort in Ort.Values())
+            
+            foreach (var ort in new JsonHandler<Ort>(Paths.ORT).Read())
             {
                 cboxOrt.Items.Add(ort);
             }

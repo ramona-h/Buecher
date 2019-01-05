@@ -17,6 +17,20 @@
             Die Speicherung erfolgt lokal auf den Rechner, auf den das Programm läuft. Es gibt 3 relevante Dateien, die wichtig sind für das Programm und im json-Format abgespeichert werden.
         </TextBlock>
 
+        <TextBlock Name="Genre" FontWeight="Bold"/>
+        <TextBlock TextWrapping="WrapWithOverflow">
+            In diesr Datei werden sämtliches Genres/Kategorien abgespeichert. 
+            Damit ein Buch erstellt werden kann, muss zuvor ein Genre existieren.
+        </TextBlock>
+        
+        <TextBlock Name="Ort" FontWeight="Bold"/>
+        <TextBlock TextWrapping="WrapWithOverflow">
+            In diesr Datei werden sämtliche Orte abgespeichert, an denen sich ein Buch befinden kann. 
+            Damit ein Buch erstellt werden kann, muss zuvor ein Ort existieren.
+        </TextBlock>
+
+
+
         <TextBlock Name="Autor" FontWeight="Bold" />
         <TextBlock TextWrapping="WrapWithOverflow">
             In dieser Datei werden sämtliche Autoren mit Vorname und Nachname abgespeichert. 
@@ -34,6 +48,7 @@
             In dieser Datei befinden sich benutzerspezifische Einstellungen wie die Farbe und ob die Anwendung hell oder dunkel dargestellt wird.
         </TextBlock>
 
+       
 
 
     </StackPanel>

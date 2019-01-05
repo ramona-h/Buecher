@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Buecher.Util
+namespace Buecher.View
 {
     /// <summary>
-    /// Interaktionslogik für AboutWindow.xaml
+    /// Interaktionslogik für GenreAnlegenView.xaml
     /// </summary>
-    public partial class AboutWindow : MetroWindow
+    public partial class GenreAnlegenView : UserControl
     {
-        public AboutWindow()
+        public GenreAnlegenView()
         {
             InitializeComponent();
-            Autor.Text = Paths.AUTOR.Pfad;
-            Buch.Text = Paths.BUCH.Pfad;
-            Genre.Text = Paths.GENRE.Pfad;
-            Ort.Text = Paths.ORT.Pfad;
-            Settings.Text = Paths.SETTINGS.Pfad;
         }
     }
 }

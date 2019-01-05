@@ -43,5 +43,17 @@ namespace Buecher.Model
             Genre other = obj as Genre;
             return Bezeichnung.CompareTo(other.Bezeichnung);
         }
+
+        public override bool Equals(object obj)
+        {
+            var genre = obj as Genre;
+            return genre != null &&
+                   Bezeichnung == genre.Bezeichnung;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1826680653 + EqualityComparer<string>.Default.GetHashCode(Bezeichnung);
+        }
     }
 }
